@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.configuraciones</groupId>
 	<artifactId>configuraciones-api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>configuraciones-api</name>
 	<description>Proyecto api de configuraciones</description>
 	<properties>
