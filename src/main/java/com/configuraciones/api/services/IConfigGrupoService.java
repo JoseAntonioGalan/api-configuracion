@@ -51,14 +51,16 @@ public interface IConfigGrupoService {
 	 * Elimina un grupo de configuración por su ID.
 	 *
 	 * @param id Identificador único del grupo de configuración a eliminar.
+	 * @return {@code true} si se eliminó correctamente, {@code false} si no se pudo eliminar.
 	 */
-	public void eliminarConfigGrupo(long id);
+	public boolean eliminarConfigGrupo(long id);
 
 	/**
 	 * Desactiva un grupo de configuración por su ID.
 	 *
 	 * @param id Identificador único del grupo de configuración a desactivar.
+	 * @return {@code true} si se desactivó correctamente, {@code false} si no se pudo desactivar.
 	 */
-	public void desactivarConfigGrupo(long id);
+	public boolean desactivarConfigGrupo(long id);
 
 }

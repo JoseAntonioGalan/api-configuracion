@@ -11,4 +11,8 @@ public interface ConfigGrupoRepository extends CrudRepository<ConfigGrupo, Long>
 
 	List<ConfigGrupo> findByActivoTrue();
 	
+	ConfigGrupo findByNombreAndActivoTrue(String nombre);
+	
+	ConfigGrupo findByIdAndActivoTrue(long id);
+	
 }
