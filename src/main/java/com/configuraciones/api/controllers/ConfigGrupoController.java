@@ -32,6 +32,18 @@ public class ConfigGrupoController {
         return ResponseEntity.ok(configGrupos);
 	}
 	
+	@GetMapping("/{id}")
+	public ResponseEntity<ConfigGrupoDTO> obtenerGrupoPorId(@PathVariable long id){
+		
+		ConfigGrupoDTO configGrupo = service.obtenerConfigGrupoByConfigGrupoIdByActivo(id);
+
+        if (configGrupo != null) {
+            return ResponseEntity.ok(configGrupo);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+	};
+	
 	@GetMapping("/{nombre}")
 	public ResponseEntity<ConfigGrupoDTO> obtenerGrupoPorNombre(@PathVariable String nombre){
 		
