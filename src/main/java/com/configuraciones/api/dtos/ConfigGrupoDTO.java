@@ -65,6 +65,11 @@ public class ConfigGrupoDTO {
 		this.configParams = configGrupo.getConfigParams();
 	}
 	
+	/**
+	 * Convierte un objeto DTO a una entidad ConfigGrupo.
+	 *
+	 * @return Entidad ConfigGrupo construida a partir de los datos del DTO
+	 */
 	public ConfigGrupo obtenerDeEntidad() {
 		ConfigGrupo entidad = new ConfigGrupo();
 		entidad.setConfigGrupoId(this.configGrupoId);

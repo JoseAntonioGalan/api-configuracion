@@ -21,6 +21,9 @@ public class ConfigParamServiceImpl  implements IConfigParamService{
 	@Autowired
 	private ConfigParamRepository repository;
 
+	/**
+     * {@inheritDoc}
+     */
 	@Override
 	public ConfigParamDTO obtenerPorIdYActivo(long id) {
 		String msg = NOMBRE_CLASE + "::obtenerPorIdYActivo()";
@@ -38,6 +41,9 @@ public class ConfigParamServiceImpl  implements IConfigParamService{
 		return configParam;
 	}
 
+	/**
+     * {@inheritDoc}
+     */
 	@Override
 	public ConfigParamDTO obtenerPorNombreYActivo(String nombre) {
 		String msg = NOMBRE_CLASE + "::obtenerPorNombreYActivo()";
@@ -55,6 +61,9 @@ public class ConfigParamServiceImpl  implements IConfigParamService{
 		return configParam;
 	}
 
+	/**
+     * {@inheritDoc}
+     */
 	@Override
 	public List<ConfigParamDTO> obtenerPorConfigGrupoIdYActivo(long id) {
 		String msg = NOMBRE_CLASE + "::obtenerPorConfigGrupoIdYActivo()";

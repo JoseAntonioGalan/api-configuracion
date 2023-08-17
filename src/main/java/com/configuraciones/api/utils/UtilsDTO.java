@@ -35,14 +35,6 @@ public class UtilsDTO {
         return listaConfigGrupoDto;
     }
     
-    public static ConfigGrupo obtenerEntidadDeConfigGrupoDTO(ConfigGrupoDTO dto) {
-    	return null;
-    }
-    
-    public static ConfigParam obtenerEntidadDeConfigParamDTO(ConfigParamDTO dto) {
-    	return null;
-    }
-    
     /**
      * Convierte una lista de entidades ConfigParam a una lista de DTOs ConfigParamDTO.
      *
