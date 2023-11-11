@@ -13,7 +13,7 @@ import java.util.List;
  * Repositorio para la entidad ConfigParam.
  */
 @Repository
-public interface ConfigParamRepository extends CrudRepository<ConfigParam, Long>, PagingAndSortingRepository<ConfigParam, Long> {
+public interface ConfigParamRepository extends PagingAndSortingRepository<ConfigParam, Long> {
 
     /**
      * Busca un parámetro de configuración por su nombre si está activo.

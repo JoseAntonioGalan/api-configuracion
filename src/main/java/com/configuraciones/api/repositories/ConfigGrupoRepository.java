@@ -2,7 +2,6 @@ package com.configuraciones.api.repositories;
 
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +11,7 @@ import com.configuraciones.api.entities.ConfigGrupo;
  * Repositorio para la entidad ConfigGrupo.
  */
 @Repository
-public interface ConfigGrupoRepository extends CrudRepository<ConfigGrupo, Long>, PagingAndSortingRepository<ConfigGrupo, Long> {
+public interface ConfigGrupoRepository extends PagingAndSortingRepository<ConfigGrupo, Long> {
 
     /**
      * Busca todos los grupos de configuración activos.
