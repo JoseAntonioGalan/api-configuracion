@@ -29,9 +29,20 @@ public class ConfigGrupoController {
      *
      * @return Lista de objetos ConfigGrupoDTO en ResponseEntity
      */
+    @GetMapping("/activos")
+    public ResponseEntity<List<ConfigGrupoDTO>> obtenerTodosGruposActivos() {
+        List<ConfigGrupoDTO> configGrupos = service.obtenerTodosActivos();
+        return ResponseEntity.ok(configGrupos);
+    }
+
+    /**
+     * Obtiene todos los grupos de configuración.
+     *
+     * @return Lista de objetos ConfigGrupoDTO en ResponseEntity
+     */
     @GetMapping
     public ResponseEntity<List<ConfigGrupoDTO>> obtenerTodosGrupos() {
-        List<ConfigGrupoDTO> configGrupos = service.obtenerTodosActivos();
+        List<ConfigGrupoDTO> configGrupos = service.obtenerTodos();
         return ResponseEntity.ok(configGrupos);
     }
 

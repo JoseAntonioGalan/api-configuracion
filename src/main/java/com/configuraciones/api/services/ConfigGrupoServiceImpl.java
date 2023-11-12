@@ -1,6 +1,8 @@
 package com.configuraciones.api.services;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -71,6 +73,25 @@ public class ConfigGrupoServiceImpl implements IConfigGrupoService {
 		
 		log.info(msg + " - end. ConfigGrupoId = " + (dto != null ? dto.getConfigGrupoId() : null));
 		return dto;
+	}
+
+	@Override
+	public List<ConfigGrupoDTO> obtenerTodos() {
+
+		String msg = NOMBRE_CLASE + "::obtenerActivos()";
+		log.info(msg + " - init");
+		
+		Iterable<ConfigGrupo> listaEntidad = repository.findAll();
+		List<ConfigGrupoDTO> listaDto = null;
+
+		if (listaEntidad != null) {
+			listaDto = UtilsDTO.obtenerListaDeEntidadConfigGrupo(StreamSupport.stream(listaEntidad.spliterator(), false).collect(Collectors.toList()));
+		}
+	
+		log.info(msg + " - end. Resultado lista: "+ (listaDto != null ? listaDto.size() : listaDto));
+		return listaDto;
+
+
 	}
 
 }
