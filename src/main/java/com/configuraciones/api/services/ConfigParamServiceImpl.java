@@ -25,20 +25,20 @@ public class ConfigParamServiceImpl  implements IConfigParamService{
      * {@inheritDoc}
      */
 	@Override
-	public ConfigParamDTO obtenerPorIdYActivo(long id) {
+	public ConfigParamDTO obtenerPorIdYActivo(Long id) {
 		String msg = NOMBRE_CLASE + "::obtenerPorIdYActivo()";
 		log.info(msg + " - init");
 		
-		ConfigParam configParamEntidad = repository.findByConfigParamIdAndActivoTrue(id);
+		ConfigParam entidad = repository.findByConfigParamIdAndActivoTrue(id);
 		
-		ConfigParamDTO configParam = null;
-		if(configParamEntidad != null) {
-			configParam = new ConfigParamDTO(configParamEntidad);
+		ConfigParamDTO dto = null;
+		if(entidad != null) {
+			dto = new ConfigParamDTO(entidad);
 		}
 		
-		log.info(msg + " - ConfigGrupoId = " + (configParam != null ? configParam.getConfigParamId() : null));
+		log.info(msg + " - ConfigGrupoId = " + (dto != null ? dto.getConfigParamId() : null));
 		log.info(msg + " - end");
-		return configParam;
+		return dto;
 	}
 
 	/**
@@ -49,31 +49,31 @@ public class ConfigParamServiceImpl  implements IConfigParamService{
 		String msg = NOMBRE_CLASE + "::obtenerPorNombreYActivo()";
 		log.info(msg + " - init");
 		
-		ConfigParam configParamEntidad = repository.findByNombreAndActivoTrue(nombre);
+		ConfigParam entidad = repository.findByNombreAndActivoTrue(nombre);
 		
-		ConfigParamDTO configParam = null;
-		if(configParamEntidad != null) {
-			configParam = new ConfigParamDTO(configParamEntidad);
+		ConfigParamDTO dto = null;
+		if(entidad != null) {
+			dto = new ConfigParamDTO(entidad);
 		}
 		
-		log.info(msg + " - ConfigGrupoId = " + (configParam != null ? configParam.getConfigParamId() : null));
+		log.info(msg + " - ConfigGrupoId = " + (dto != null ? dto.getConfigParamId() : null));
 		log.info(msg + " - end");
-		return configParam;
+		return dto;
 	}
 
 	/**
      * {@inheritDoc}
      */
 	@Override
-	public List<ConfigParamDTO> obtenerPorConfigGrupoIdYActivo(long id) {
+	public List<ConfigParamDTO> obtenerPorConfigGrupoIdYActivo(Long id) {
 		String msg = NOMBRE_CLASE + "::obtenerPorConfigGrupoIdYActivo()";
 		log.info(msg + " - init");
 		
-		List<ConfigParamDTO> listaConfigParam = UtilsDTO.obtenerListaDeEntidadConfigParam(repository.findByConfigGrupoIdAndActivoTrue(id));
+		List<ConfigParamDTO> listaDto = UtilsDTO.obtenerListaDeEntidadConfigParam(repository.findByConfigGrupoIdAndActivoTrue(id));
 		
-		log.info(msg + "Resultado lista: "+ (listaConfigParam != null ? listaConfigParam.size() : listaConfigParam));
+		log.info(msg + "Resultado lista: "+ (listaDto != null ? listaDto.size() : listaDto));
 		log.info(msg + " - end");
-		return listaConfigParam;
+		return listaDto;
 	}
 
 }

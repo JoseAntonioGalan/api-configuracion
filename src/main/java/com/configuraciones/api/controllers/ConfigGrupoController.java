@@ -31,7 +31,7 @@ public class ConfigGrupoController {
      */
     @GetMapping
     public ResponseEntity<List<ConfigGrupoDTO>> obtenerTodosGrupos() {
-        List<ConfigGrupoDTO> configGrupos = service.obtenerActivos();
+        List<ConfigGrupoDTO> configGrupos = service.obtenerTodosActivos();
         return ResponseEntity.ok(configGrupos);
     }
 

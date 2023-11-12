@@ -49,7 +49,7 @@ public class ConfigParamController {
      * @return Lista de objetos ConfigParamDTO en ResponseEntity
      */
     @GetMapping("/grupo/{id}")
-    public ResponseEntity<List<ConfigParamDTO>> obtenerParametroPorGrupo(@PathVariable long id) {
+    public ResponseEntity<List<ConfigParamDTO>> obtenerParametroPorGrupo(@PathVariable Long id) {
         List<ConfigParamDTO> configParam = service.obtenerPorConfigGrupoIdYActivo(id);
         return ResponseEntity.ok(configParam);
     }

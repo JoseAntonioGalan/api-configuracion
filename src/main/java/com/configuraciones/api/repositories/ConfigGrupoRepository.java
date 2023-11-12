@@ -34,5 +34,5 @@ public interface ConfigGrupoRepository extends PagingAndSortingRepository<Config
      * @param id ID del grupo de configuración a buscar
      * @return Grupo de configuración si se encuentra, de lo contrario, null
      */
-    ConfigGrupo findByConfigGrupoIdAndActivoTrue(long id);
+    ConfigGrupo findByConfigGrupoIdAndActivoTrue(Long id);
 }

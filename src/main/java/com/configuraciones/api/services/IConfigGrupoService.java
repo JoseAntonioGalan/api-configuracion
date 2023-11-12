@@ -11,7 +11,7 @@ public interface IConfigGrupoService {
 	 *
 	 * @return Lista de objetos ConfigGrupoDTO que representan los grupos de configuración activos.
 	 */
-	public List<ConfigGrupoDTO> obtenerActivos();
+	public List<ConfigGrupoDTO> obtenerTodosActivos();
 
 	/**
 	 * Obtiene un grupo de configuración por su ID, solo si está activo.
@@ -19,7 +19,7 @@ public interface IConfigGrupoService {
 	 * @param id Identificador único del grupo de configuración.
 	 * @return Objeto ConfigGrupoDTO que representa el grupo de configuración activo encontrado.
 	 */
-	public ConfigGrupoDTO obtenerConfigGrupoByConfigGrupoIdByActivo(long id);
+	public ConfigGrupoDTO obtenerConfigGrupoByConfigGrupoIdByActivo(Long id);
 
 
 	/**

@@ -15,7 +15,7 @@ public interface IConfigParamService {
      * @param id ID del parámetro de configuración a buscar
      * @return DTO del parámetro de configuración si se encuentra, de lo contrario, null
      */
-    public ConfigParamDTO obtenerPorIdYActivo(long id);
+    public ConfigParamDTO obtenerPorIdYActivo(Long id);
     
     /**
      * Obtiene un parámetro de configuración por su nombre si está activo.
@@ -31,6 +31,6 @@ public interface IConfigParamService {
      * @param id ID del grupo de configuración para filtrar los parámetros
      * @return Lista de DTOs de parámetros de configuración si se encuentran, de lo contrario, lista vacía
      */
-    public List<ConfigParamDTO> obtenerPorConfigGrupoIdYActivo(long id);
+    public List<ConfigParamDTO> obtenerPorConfigGrupoIdYActivo(Long id);
     
 }

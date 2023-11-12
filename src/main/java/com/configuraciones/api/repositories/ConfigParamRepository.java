@@ -36,7 +36,7 @@ public interface ConfigParamRepository extends PagingAndSortingRepository<Config
      * @param configGrupoId ID del grupo de configuración para filtrar los parámetros
      * @return Lista de parámetros de configuración si se encuentran, de lo contrario, lista vacía
      */
-    @Query(value = "SELECT * FROM config_param cp WHERE cp.config_grupo_id = :configGrupoId and cp.activo = true", nativeQuery = true)
+    @Query(value = "SELECT * FROM CONFIG_PARAM cp WHERE cp.CONFIG_GRUPO_ID = :configGrupoId and cp.ACTIVO = true", nativeQuery = true)
     List<ConfigParam> findByConfigGrupoIdAndActivoTrue(@Param("configGrupoId") Long configGrupoId);
     
 }

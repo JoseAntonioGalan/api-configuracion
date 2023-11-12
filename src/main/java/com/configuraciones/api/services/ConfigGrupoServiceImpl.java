@@ -25,7 +25,7 @@ public class ConfigGrupoServiceImpl implements IConfigGrupoService {
      * {@inheritDoc}
      */
 	@Override
-	public List<ConfigGrupoDTO> obtenerActivos() {
+	public List<ConfigGrupoDTO> obtenerTodosActivos() {
 		String msg = NOMBRE_CLASE + "::obtenerActivos()";
 		log.info(msg + " - init");
 		
@@ -40,20 +40,19 @@ public class ConfigGrupoServiceImpl implements IConfigGrupoService {
      * {@inheritDoc}
      */
 	@Override
-	public ConfigGrupoDTO obtenerConfigGrupoByConfigGrupoIdByActivo(long id) {
+	public ConfigGrupoDTO obtenerConfigGrupoByConfigGrupoIdByActivo(Long id) {
 		String msg = NOMBRE_CLASE + "::obtenerConfigGrupoByConfigGrupoIdByActivo()";
 		log.info(msg + " - init");
 		
-		ConfigGrupo configGrupoEntidad = repository.findByConfigGrupoIdAndActivoTrue(id);
+		ConfigGrupo entidad = repository.findByConfigGrupoIdAndActivoTrue(id);
 		
-		ConfigGrupoDTO configGrupo = null;
-		if(configGrupoEntidad != null) {
-			configGrupo = new ConfigGrupoDTO(configGrupoEntidad);
+		ConfigGrupoDTO dto = null;
+		if(entidad != null) {
+			dto = new ConfigGrupoDTO(entidad);
 		}
 		
-		log.info(msg + " - ConfigGrupoId = " + (configGrupo != null ? configGrupo.getConfigGrupoId() : null));
-		log.info(msg + " - end");
-		return configGrupo;
+		log.info(msg + " - end. ConfigGrupoId = " + (dto != null ? dto.getConfigGrupoId() : null));
+		return dto;
 	}
 
 	/**
@@ -64,13 +63,15 @@ public class ConfigGrupoServiceImpl implements IConfigGrupoService {
 		String msg = NOMBRE_CLASE + "::obtenerConfigGrupoByNombreAndActivo()";
 		log.info(msg + " - init");
 		
-		ConfigGrupo configGrupoEntidad = repository.findByNombreAndActivoTrue(nombre);
+		ConfigGrupo entidad = repository.findByNombreAndActivoTrue(nombre);
 		
-		ConfigGrupoDTO configGrupo = configGrupoEntidad != null ? new ConfigGrupoDTO(configGrupoEntidad) : null;
+		ConfigGrupoDTO dto = null;
+		if(entidad != null) {
+			dto = new ConfigGrupoDTO(entidad);
+		}
 		
-		log.info(msg + " - ConfigGrupoId = " + (configGrupo != null ? configGrupo.getConfigGrupoId() : null));
-		log.info(msg + " - end");
-		return configGrupo;
+		log.info(msg + " - end. ConfigGrupoId = " + (dto != null ? dto.getConfigGrupoId() : null));
+		return dto;
 	}
 
 }
