@@ -1,11 +1,15 @@
 package com.configuraciones.api.services;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.configuraciones.api.dtos.ConfigGrupoDTO;
 import com.configuraciones.api.dtos.ConfigParamDTO;
+import com.configuraciones.api.entities.ConfigGrupo;
 import com.configuraciones.api.entities.ConfigParam;
 import com.configuraciones.api.repositories.ConfigParamRepository;
 import com.configuraciones.api.utils.UtilsDTO;
@@ -73,6 +77,23 @@ public class ConfigParamServiceImpl  implements IConfigParamService{
 		
 		log.info(msg + "Resultado lista: "+ (listaDto != null ? listaDto.size() : listaDto));
 		log.info(msg + " - end");
+		return listaDto;
+	}
+
+	@Override
+	public List<ConfigParamDTO> obtenerTodos() {
+		String msg = NOMBRE_CLASE + "::obtenerTodos()";
+		log.info(msg + " - init");
+
+		Iterable<ConfigParam> listaEntidad = repository.findAll();
+		List<ConfigParamDTO> listaDto = null;
+
+		if (listaEntidad != null) {
+			listaDto = UtilsDTO.obtenerListaDeEntidadConfigParam(
+					StreamSupport.stream(listaEntidad.spliterator(), false).collect(Collectors.toList()));
+		}
+
+		log.info(msg + " - end. Resultado lista: " + (listaDto != null ? listaDto.size() : listaDto));
 		return listaDto;
 	}
 

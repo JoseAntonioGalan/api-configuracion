@@ -32,5 +32,15 @@ public interface IConfigParamService {
      * @return Lista de DTOs de parámetros de configuración si se encuentran, de lo contrario, lista vacía
      */
     public List<ConfigParamDTO> obtenerPorConfigGrupoIdYActivo(Long id);
-    
+
+
+    /**
+     * Obtiene una lista de parámetros de todos los parametros de configuración.
+     *
+     * @return Lista de DTOs de parámetros de configuración.
+     */
+    public List<ConfigParamDTO> obtenerTodos();
+
+
+
 }

@@ -24,6 +24,18 @@ public class ConfigParamController {
     @Autowired
     private IConfigParamService service;
 
+
+   /**
+     * Obtiene todos los grupos de configuración.
+     *
+     * @return Lista de objetos ConfigGrupoDTO en ResponseEntity
+     */
+    @GetMapping
+    public ResponseEntity<List<ConfigParamDTO>> obtenerTodosGrupos() {
+        List<ConfigParamDTO> listaParametros = service.obtenerTodos();
+        return ResponseEntity.ok(listaParametros);
+    }
+
     /**
      * Obtiene un parámetro de configuración por su nombre si está activo.
      *
@@ -53,4 +65,6 @@ public class ConfigParamController {
         List<ConfigParamDTO> configParam = service.obtenerPorConfigGrupoIdYActivo(id);
         return ResponseEntity.ok(configParam);
     }
+
+     
 }

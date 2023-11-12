@@ -17,81 +17,81 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class ConfigGrupoServiceImpl implements IConfigGrupoService {
-	
+
 	private static final String NOMBRE_CLASE = ConfigGrupoServiceImpl.class.getName();
-	
+
 	@Autowired
 	private ConfigGrupoRepository repository;
 
 	/**
-     * {@inheritDoc}
-     */
+	 * {@inheritDoc}
+	 */
 	@Override
 	public List<ConfigGrupoDTO> obtenerTodosActivos() {
 		String msg = NOMBRE_CLASE + "::obtenerActivos()";
 		log.info(msg + " - init");
-		
-		List<ConfigGrupoDTO> listaConfigGrupo = UtilsDTO.obtenerListaDeEntidadConfigGrupo(repository.findByActivoTrue());
-	
-		log.info(msg + " - end. Resultado lista: "+ (listaConfigGrupo != null ? listaConfigGrupo.size() : listaConfigGrupo));
+
+		List<ConfigGrupoDTO> listaConfigGrupo = UtilsDTO
+				.obtenerListaDeEntidadConfigGrupo(repository.findByActivoTrue());
+
+		log.info(msg + " - end. Resultado lista: "
+				+ (listaConfigGrupo != null ? listaConfigGrupo.size() : listaConfigGrupo));
 		return listaConfigGrupo;
 	}
 
 	/**
-     * {@inheritDoc}
-     */
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ConfigGrupoDTO obtenerConfigGrupoByConfigGrupoIdByActivo(Long id) {
 		String msg = NOMBRE_CLASE + "::obtenerConfigGrupoByConfigGrupoIdByActivo()";
 		log.info(msg + " - init");
-		
+
 		ConfigGrupo entidad = repository.findByConfigGrupoIdAndActivoTrue(id);
-		
+
 		ConfigGrupoDTO dto = null;
-		if(entidad != null) {
+		if (entidad != null) {
 			dto = new ConfigGrupoDTO(entidad);
 		}
-		
+
 		log.info(msg + " - end. ConfigGrupoId = " + (dto != null ? dto.getConfigGrupoId() : null));
 		return dto;
 	}
 
 	/**
-     * {@inheritDoc}
-     */
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ConfigGrupoDTO obtenerConfigGrupoByNombreAndActivo(String nombre) {
 		String msg = NOMBRE_CLASE + "::obtenerConfigGrupoByNombreAndActivo()";
 		log.info(msg + " - init");
-		
+
 		ConfigGrupo entidad = repository.findByNombreAndActivoTrue(nombre);
-		
+
 		ConfigGrupoDTO dto = null;
-		if(entidad != null) {
+		if (entidad != null) {
 			dto = new ConfigGrupoDTO(entidad);
 		}
-		
+
 		log.info(msg + " - end. ConfigGrupoId = " + (dto != null ? dto.getConfigGrupoId() : null));
 		return dto;
 	}
 
 	@Override
 	public List<ConfigGrupoDTO> obtenerTodos() {
-
-		String msg = NOMBRE_CLASE + "::obtenerActivos()";
+		String msg = NOMBRE_CLASE + "::obtenerTodos()";
 		log.info(msg + " - init");
-		
+
 		Iterable<ConfigGrupo> listaEntidad = repository.findAll();
 		List<ConfigGrupoDTO> listaDto = null;
 
 		if (listaEntidad != null) {
-			listaDto = UtilsDTO.obtenerListaDeEntidadConfigGrupo(StreamSupport.stream(listaEntidad.spliterator(), false).collect(Collectors.toList()));
+			listaDto = UtilsDTO.obtenerListaDeEntidadConfigGrupo(
+					StreamSupport.stream(listaEntidad.spliterator(), false).collect(Collectors.toList()));
 		}
-	
-		log.info(msg + " - end. Resultado lista: "+ (listaDto != null ? listaDto.size() : listaDto));
+
+		log.info(msg + " - end. Resultado lista: " + (listaDto != null ? listaDto.size() : listaDto));
 		return listaDto;
-
-
 	}
 
 }
