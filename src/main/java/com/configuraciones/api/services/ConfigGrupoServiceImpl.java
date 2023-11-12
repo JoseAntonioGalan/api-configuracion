@@ -30,9 +30,8 @@ public class ConfigGrupoServiceImpl implements IConfigGrupoService {
 		log.info(msg + " - init");
 		
 		List<ConfigGrupoDTO> listaConfigGrupo = UtilsDTO.obtenerListaDeEntidadConfigGrupo(repository.findByActivoTrue());
-		
-		log.info(msg + "Resultado lista: "+ (listaConfigGrupo != null ? listaConfigGrupo.size() : listaConfigGrupo));
-		log.info(msg + " - end");
+	
+		log.info(msg + " - end. Resultado lista: "+ (listaConfigGrupo != null ? listaConfigGrupo.size() : listaConfigGrupo));
 		return listaConfigGrupo;
 	}
 
