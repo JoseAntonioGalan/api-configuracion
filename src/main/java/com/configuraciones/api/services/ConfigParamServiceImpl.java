@@ -7,9 +7,7 @@ import java.util.stream.StreamSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.configuraciones.api.dtos.ConfigGrupoDTO;
 import com.configuraciones.api.dtos.ConfigParamDTO;
-import com.configuraciones.api.entities.ConfigGrupo;
 import com.configuraciones.api.entities.ConfigParam;
 import com.configuraciones.api.repositories.ConfigParamRepository;
 import com.configuraciones.api.utils.UtilsDTO;
