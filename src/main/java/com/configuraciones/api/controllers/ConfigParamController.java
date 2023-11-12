@@ -13,12 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.configuraciones.api.dtos.ConfigParamDTO;
 import com.configuraciones.api.services.IConfigParamService;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * Controlador para manejar las operaciones relacionadas con los parámetros de configuración.
  */
 @CrossOrigin
 @RestController
 @RequestMapping("api/config-param")
+@Slf4j
 public class ConfigParamController {
 
     @Autowired
@@ -31,9 +34,21 @@ public class ConfigParamController {
      * @return Lista de objetos ConfigGrupoDTO en ResponseEntity
      */
     @GetMapping
-    public ResponseEntity<List<ConfigParamDTO>> obtenerTodosGrupos() {
+    public ResponseEntity<List<ConfigParamDTO>> obtenerTodosParametros() {
+        String msg = this.getClass().getSimpleName() + "::obtenerTodosParametros()";
+        log.info(msg + " - init.");
         List<ConfigParamDTO> listaParametros = service.obtenerTodos();
-        return ResponseEntity.ok(listaParametros);
+
+        ResponseEntity<List<ConfigParamDTO>> respuesta = null;
+
+        if (listaParametros != null && !listaParametros.isEmpty()) {
+            respuesta = ResponseEntity.ok(listaParametros);
+        } else {
+            respuesta = ResponseEntity.notFound().build();
+        }
+
+        log.info(msg + " - end.");
+        return respuesta;
     }
 
     /**
@@ -44,14 +59,21 @@ public class ConfigParamController {
      */
     @GetMapping("/{nombre}")
     public ResponseEntity<ConfigParamDTO> obtenerParametroPorNombre(@PathVariable String nombre) {
+        String msg = this.getClass().getSimpleName() + "::obtenerParametroPorNombre( id: " + nombre + " )";
+        log.info(msg + " - init.");
 
         ConfigParamDTO configParam = service.obtenerPorNombreYActivo(nombre);
 
+        ResponseEntity<ConfigParamDTO> respuesta = null;
+
         if (configParam != null) {
-            return ResponseEntity.ok(configParam);
+            respuesta = ResponseEntity.ok(configParam);
         } else {
-            return ResponseEntity.notFound().build();
+            respuesta = ResponseEntity.notFound().build();
         }
+
+        log.info(msg + " - end.");
+        return respuesta;
     }
 
     /**
@@ -62,8 +84,20 @@ public class ConfigParamController {
      */
     @GetMapping("/grupo/{id}")
     public ResponseEntity<List<ConfigParamDTO>> obtenerParametroPorGrupo(@PathVariable Long id) {
+        String msg = this.getClass().getSimpleName() + "::obtenerParametroPorGrupo( idGrupo: " + id + " )";
+        log.info(msg + " - init.");
+
         List<ConfigParamDTO> configParam = service.obtenerPorConfigGrupoIdYActivo(id);
-        return ResponseEntity.ok(configParam);
+        ResponseEntity<List<ConfigParamDTO>> respuesta = null;
+
+        if (configParam != null && !configParam.isEmpty()) {
+            respuesta = ResponseEntity.ok(configParam);
+        } else {
+            respuesta = ResponseEntity.notFound().build();
+        }
+
+        log.info(msg + " - end.");
+        return respuesta;
     }
 
      
